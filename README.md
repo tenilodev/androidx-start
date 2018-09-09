@@ -1,2 +1,2 @@
 # androidx-start
-kickstart android apps using androidx library
+kickstart android apps using androidx mvvm library  
