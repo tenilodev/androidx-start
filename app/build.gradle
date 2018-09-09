@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.tenilodev.indekos"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.core:core-ktx:1.0.0-rc02'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$rootProject.supportVersion"
+    implementation "androidx.cardview:cardview:$rootProject.supportVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintVersion"
+
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+
+    //dagger
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+//    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    implementation 'android.arch.lifecycle:extensions:1.1.1'
+//    implementation 'com.android.support:support-v4:28.0.0-rc02'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
+    kapt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
+
+    //rxjava
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
+
+    //pattern mvvm
+    implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.archVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.archVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata:$rootProject.archVersion"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$rootProject.archVersion"
+    // use -ktx for Kotlin
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.archVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:$rootProject.archVersion"
+    implementation "androidx.room:room-rxjava2:$rootProject.archVersion"
+    kapt "androidx.room:room-compiler:$rootProject.archVersion"
+
+    //glide
+    implementation("com.github.bumptech.glide:glide:$rootProject.glideVersion") {
+        exclude group: "com.android.support"
+    }
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    //intro
+    implementation "com.github.apl-devs:appintro:$rootProject.appIntroVersion"
+
+    implementation 'android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha05'
+
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+}
